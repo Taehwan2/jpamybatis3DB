@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="test">
+
+    <!-- 사용자 정보 조회 -->
+    <select id="findUserById" parameterType="long" resultType="com.kfr.admin.domain.user.entity.UserEntity">
+        SELECT user_id AS id,
+               user_name AS userName,
+               user_age AS userAge,
+               user_password AS userPassword,
+               user_email AS userEmail,
+               company_name AS companyName,
+               user_role AS role
+        FROM WEBDB.dbo.tc_adminUserMaster
+        WHERE user_id = #{id}
+    </select>
+
+
+    <select id="findUserByEmail" parameterType="String" resultType="com.kfr.admin.domain.user.entity.UserEntity">
+        SELECT user_id AS id,
+               user_name AS userName,
+               user_age AS userAge,
+               user_password AS userPassword,
+               user_email AS userEmail,
+               company_name AS companyName,
+               user_role AS role
+        FROM WEBDB.dbo.tc_adminUserMaster
+        WHERE user_email = #{email}
+    </select>
+
+
+</mapper>
